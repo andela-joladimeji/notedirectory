@@ -1,36 +1,37 @@
 app.controller('noteCtrl', function ($scope, noteFactory) {
   $scope.createNote = function(note){
-    noteFactory.create().then(function(response){
+    noteFactory.create(notes).then(function(response){
       $scope.newnote = response.data;
       }, function(err){
       console.error(err);
     })
   }
 
-  $scope.getNotes = function(note){
+  $scope.getNotes = function(){
     noteFactory.getAll().then(function(response){
+      console.log($scope.newnote, 'notes')
       $scope.notes = response.data;
       }, function(err){
       console.error(err);
     })
   }
-  $scope.getNotesByLabel = function(note){
-    noteFactory.getByLabel().then(function(response){
+  $scope.getNotesByLabel = function(query){
+    noteFactory.getByLabel(query).then(function(response){
       $scope.notes = response.data;
       }, function(err){
       console.error(err);
     })
   }
   $scope.update = function(note){
-    noteFactory.update().then(function(response){
+    noteFactory.update(note._id, note).then(function(response){
       $scope.updateNote = response.data;
       }, function(err){
       console.error(err);
     })
   }
   $scope.delete = function(note){
-    noteFactory.delete().then(function(response){
-      $scope.newnote = response.data;
+    noteFactory.delete(note._id).then(function(response){
+      $scope.deleteMessage = response.data;
       }, function(err){
       console.error(err);
     })

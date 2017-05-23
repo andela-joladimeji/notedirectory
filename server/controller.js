@@ -14,7 +14,7 @@ module.exports = {
     })
   },
   getAll: function(req, res){
-    Notes.find().sort('-updatedDate').exec(function(err, notes){
+    Notes.find().sort({updatedDate: -1}).exec(function(err, notes){
       if(err){
         return res.send('error getting notes:' + err)
       }else{
@@ -24,8 +24,7 @@ module.exports = {
   },
   getByLabel: function(req, res){
     console.log('getByLabel!!!!',req.query, req.params)
-    label = req.query
-    Notes.find().where('label').equals(req.query).exec(function(err, notes){
+    Notes.find({label: req.query.label}).exec(function(err, notes){
       if(err){
         return res.send('error retriveing notes by label' + err)
       }else{

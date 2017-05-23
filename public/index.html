@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="notedirectory">
 <head>
-  <title></title>
+  <title>Note App</title>
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body ng-controller="noteCtrl" data-ng-init="getNotes()">
-Notes APP {{notes}}
-<div data-ng-repeat="note in notes">
-{{note}}
+
+Notes APP
+<div class="container" data-ng-repeat="note in notes">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+   <input type="text" ng-model="note.title">
+  </div>
+  <div class="form-group">{{note.description}}</div>
+  <button class="btn btn-default" ng-click="update()">update</button>
 </div>
+<div class="container">
+  <form>
+    <label>
+      <input type="text" ng-model="label">
+    </label>
+  <button class="btn btn-default" ng-click="getNotesByLabel()">Submit</button>
+  </form>
+</div>
+
   <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="controller.js"></script>

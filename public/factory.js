@@ -7,7 +7,7 @@ app.factory('noteFactory', function ($http) {
       return $http.get('/api/notes')
     },
     getByLabel: function(query){
-      return $http.get('/api/notesBylabel?' + query)
+      return $http.get('/api/notesBylabel?label=' + query)
     },
     update: function(id, note){
       return $http.put('/api/notes' + id, note)
@@ -17,3 +17,4 @@ app.factory('noteFactory', function ($http) {
     },
   }
 })
+
