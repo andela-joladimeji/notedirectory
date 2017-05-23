@@ -23,7 +23,6 @@ module.exports = {
     })
   },
   getByLabel: function(req, res){
-    console.log('getByLabel!!!!',req.query, req.params)
     Notes.find({label: req.query.label}).exec(function(err, notes){
       if(err){
         return res.send('error retriveing notes by label' + err)
