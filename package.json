@@ -1,0 +1,16 @@
+{
+  "name": "notedirectory",
+  "version": "1.0.0",
+  "description": "app for notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "jumoke",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2"
+  }
+}

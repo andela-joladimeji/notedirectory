@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="notedirectory">
+<head>
+  <title></title>
+</head>
+<body ng-controller="noteCtrl" data-ng-init="getNotes()">
+Notes APP {{notes}}
+<div data-ng-repeat="note in notes">
+{{note}}
+</div>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+  <script type="text/javascript" src="factory.js"></script>
+</body>
+</html>
