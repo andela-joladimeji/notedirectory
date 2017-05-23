@@ -1,32 +1,70 @@
 <!DOCTYPE html>
 <html ng-app="notedirectory">
+
 <head>
   <title>Note App</title>
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body ng-controller="noteCtrl" data-ng-init="getNotes()">
-
-Notes APP
-<div class="container" data-ng-repeat="note in notes">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Title</label>
-   <input type="text" ng-model="note.title">
-  </div>
-  <div class="form-group">{{note.description}}</div>
-  <button class="btn btn-default" ng-click="update()">update</button>
-</div>
-<div class="container">
-  <form>
-    <label>
+  <h3>Notes APP</h3>
+  <div class="container">
+    <div ng-if="error">
+      <p>{{error}}</p>
+    </div>
+    <div class="col-md-6" data-ng-repeat="note in notes">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" ng-model="note.title">
+      </div>
+      <div class="form-group"><b>Content:</b> {{note.content}}</div>
+    </div>
+    <!-- <div class="col-md-6"> -->
+    <!-- <div class="container"> -->
+    <form class="col-md-6">
+      <label>Label to search by </label>
       <input type="text" ng-model="label">
-    </label>
-  <button class="btn btn-default" ng-click="getNotesByLabel()">Submit</button>
-  </form>
-</div>
+      <button class="btn btn-default" ng-click="getNotesByLabel(label)">Search By Label</button>
+    </form>
+    <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <div class="container">
+    <div class="col-md-6">
+      Create New Note
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" ng-model="note.title">
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <input type="text" ng-model="note.content">
+        </div>
+        <div class="form-group">
+          <label for="label">Label</label>
+          <input type="text" ng-model="note.label">
+        </div>
+        <button class="btn btn-default" ng-click="createNote(note)">create Note</button>
+      </form>
+      <div ng-if="createsuccessmessage">{{createsuccessmessage}}
 
+        <p ng-model="createsuccessmessage"></p>
+      </div>
+    </div>
+    <div class="col-md-6" data-ng-repeat="note in notesByLabel" ng-if="notesByLabel">
+      Notes By Label Search
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" ng-model="note.title">
+      </div>
+      <div class="form-group"><b>Content:</b> {{note.content}}</div>
+    </div>
+  </div>
   <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="controller.js"></script>
   <script type="text/javascript" src="factory.js"></script>
 </body>
+
 </html>

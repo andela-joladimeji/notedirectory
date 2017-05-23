@@ -9,7 +9,7 @@ module.exports = {
         return res.send('error saving notes:' + err)
       }
       else{
-        return res.json(createdNote)
+        return res.json("Note successfully created")
       }
     })
   },
@@ -38,7 +38,7 @@ module.exports = {
             return res.send(err);
           }
           note.title = req.body.title
-          note.description = req.body.description
+          note.content = req.body.content
           note.label = req.body.label
           note.updatedDate = Date.now()
           note.save(function(err, note){
