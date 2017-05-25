@@ -1,5 +1,6 @@
 <div class="container">
   <div class="col-md-6 createDiv">
+    <a ui-sref="home" ui-sref-active="active">Home</a>
     <form>
       <p>Create New Note</p>
       <div class="form-group">
@@ -8,7 +9,7 @@
       </div>
       <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" ng-model="note.content">
+        <textarea ng-model="note.content"></textarea>
       </div>
       <div class="form-group">
         <label for="label">Label</label>

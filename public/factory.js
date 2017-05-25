@@ -11,10 +11,10 @@ app.factory('noteFactory', function ($http) {
       return $http.get('/api/notesBylabel?label=' + query)
     },
     update: function(id, note){
-      return $http.put('/api/notes' + id, note)
+      return $http.put('/api/notes/' + id, note)
     },
     delete: function(){
-      return $http.delete('/api/notes' + id)
+      return $http.delete('/api/notes/' + id)
     },
   }
 })
